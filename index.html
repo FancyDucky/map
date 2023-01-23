@@ -1,48 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <style>
-      /* CSS styles for the image and the circle */
-      #image {
-        position: relative;
-      }
-      .circle {
-        position: absolute;
-        border-radius: 50%;
-        background-color: red;
-        pointer-events: none;
-      }
-    </style>
+    <title>Click Circle</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-    <div id="image-container">
-      <img id="image" src="image.jpg" alt="An image" width="400" height="300">
-    </div>
-    <script>
-      // JavaScript code to add interactivity
-      var image = document.getElementById("image");
-      var circle = document.createElement("div");
-      circle.classList.add("circle");
-      image.appendChild(circle);
-
-      image.addEventListener("mousedown", function(event) {
-        circle.style.left = (event.clientX - 50) + "px";
-        circle.style.top = (event.clientY - 50) + "px";
-        circle.style.width = "100px";
-        circle.style.height = "100px";
-        circle.style.display = "block";
-      });
-
-      image.addEventListener("mousemove", function(event) {
-        if (event.buttons === 1) {
-          circle.style.left = (event.clientX - 50) + "px";
-          circle.style.top = (event.clientY - 50) + "px";
-        }
-      });
-
-      image.addEventListener("mouseup", function() {
-        circle.style.display = "none";
-      });
-    </script>
+    <div id="container"></div>
+    <script src="script.js"></script>
   </body>
 </html>
+
