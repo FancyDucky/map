@@ -1,57 +1,48 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script>
-      function placeCircle(event) {
-        var img = document.getElementById("image");
-        var imgWidth = img.clientWidth;
-        var imgHeight = img.clientHeight;
-
-        var circle = document.createElement("div");
-        circle.style.position = "absolute";
-        circle.style.width = "50px";
-        circle.style.height = "50px";
-        circle.style.background = "none";
-        circle.style.border = "2px solid red";
-        circle.style.borderRadius = "50%";
-        
-        var x = event.clientX - img.offsetLeft;
-        var y = event.clientY - img.offsetTop;
-        
-        circle.style.left = x + "px";
-        circle.style.top = y + "px";
-        
-        img.appendChild(circle);
-        localStorage.setItem("circle", JSON.stringify({
-          x: x,
-          y: y
-        }));
+    <style>
+      /* CSS styles for the image and the circle */
+      #image {
+        position: relative;
       }
-      
-      function loadCircle() {
-        var circleData = JSON.parse(localStorage.getItem("circle"));
-        if (circleData) {
-          var img = document.getElementById("image");
-          var imgWidth = img.clientWidth;
-          var imgHeight = img.clientHeight;
-  
-          var circle = document.createElement("div");
-          circle.style.position = "absolute";
-          circle.style.width = "50px";
-          circle.style.height = "50px";
-          circle.style.background = "none";
-          circle.style.border = "2px solid red";
-          circle.style.borderRadius = "50%";
-          
-          circle.style.left = circleData.x + "px";
-          circle.style.top = circleData.y + "px";
-          
-          img.appendChild(circle);
-        }
+      .circle {
+        position: absolute;
+        border-radius: 50%;
+        background-color: red;
+        pointer-events: none;
       }
-    </script>
+    </style>
   </head>
-  <body onload="loadCircle()">
-    <img id="image" src="image.jpg" alt="image" onclick="placeCircle(event)">
+  <body>
+    <div id="image-container">
+      <img id="image" src="image.jpg" alt="An image" width="400" height="300">
+    </div>
+    <script>
+      // JavaScript code to add interactivity
+      var image = document.getElementById("image");
+      var circle = document.createElement("div");
+      circle.classList.add("circle");
+      image.appendChild(circle);
+
+      image.addEventListener("mousedown", function(event) {
+        circle.style.left = (event.clientX - 50) + "px";
+        circle.style.top = (event.clientY - 50) + "px";
+        circle.style.width = "100px";
+        circle.style.height = "100px";
+        circle.style.display = "block";
+      });
+
+      image.addEventListener("mousemove", function(event) {
+        if (event.buttons === 1) {
+          circle.style.left = (event.clientX - 50) + "px";
+          circle.style.top = (event.clientY - 50) + "px";
+        }
+      });
+
+      image.addEventListener("mouseup", function() {
+        circle.style.display = "none";
+      });
+    </script>
   </body>
 </html>
