@@ -1,12 +1,15 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Click Circle</title>
-    
-  </head>
-  <body>
-    <div id="container"></div>
-    <script src="script.js"></script>
-  </body>
-</html>
+<div style="width: 640px; height: 480px; max-width: 100%">
+  <div id="game"></div>
+</div>
 
+<script type="text/javascript">
+  EJS_player = '#game';
+  EJS_biosUrl = ''; // URL to BIOS file, if required
+  EJS_gameUrl = 'path_to_game_rom.gba'; // URL or relative path to the GBA game ROM file
+  EJS_core = 'gba'; // Emulator core: gba
+
+  // Load the emulator
+  var script = document.createElement('script');
+  script.src = 'https://www.emulatorjs.com/loader.js';
+  document.body.appendChild(script);
+</script>
