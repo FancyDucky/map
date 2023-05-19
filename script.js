@@ -1,8 +1,10 @@
-var container = document.getElementById("container");
-container.addEventListener("click", function(e) {
-  var circle = document.createElement("div");
-  circle.classList.add("circle");
-  circle.style.left = e.pageX + "px";
-  circle.style.top = e.pageY + "px";
-  container.appendChild(circle);
-});
+<div style="width:640px;height:480px;max-width:100%">
+        <div id="game"></div>
+      </div>
+<script type="text/javascript">
+    EJS_player = '#game';
+    EJS_biosUrl = '';
+    EJS_gameUrl = ''; // Url to Game rom
+    EJS_core = 'gba'; // Optional core: vbam, vbanext
+</script>
+<script src="https://www.emulatorjs.com/loader.js"></script>
